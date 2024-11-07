@@ -5,8 +5,8 @@ A crud operation demonstrate using Golang using Gorilla/Mux package. It is singl
 ## TODO
 
 - [x] Setup init
-- [ ] Get All Movies
-- [ ] Get by Id
+- [x] Get All Movies
+- [x] Get by Id
 - [ ] Create
 - [ ] Update
 - [ ] Delete
