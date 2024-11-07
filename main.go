@@ -54,6 +54,31 @@ func createMovie(ctx *gin.Context) {
 	ctx.JSON(http.StatusCreated, newMovie)
 }
 
+func updateMovie(ctx *gin.Context) {
+	paramId := ctx.Param("id")
+	id, err := strconv.Atoi(paramId)
+	if err != nil {
+		return
+	}
+
+	for index, movie := range movies {
+		if movie.Id == id {
+			var updateMovie Movies
+			err := ctx.BindJSON(&updateMovie)
+			if err != nil {
+				ctx.JSON(http.StatusBadRequest, gin.H{"message": err.Error()})
+				return
+			}
+			updateMovie.Id = id
+			movies[index] = updateMovie
+			ctx.JSON(http.StatusOK, updateMovie)
+			return
+		}
+	}
+	ctx.JSON(http.StatusNotFound, gin.H{"message": "Movie not found"})
+
+}
+
 func main() {
 	r := gin.Default()
 	r.GET("/ping", func(ctx *gin.Context) {
@@ -68,6 +93,7 @@ func main() {
 	r.GET("/getmovies", getMovies)
 	r.GET("/getmovie/:id", getMovieById)
 	r.POST("/createmovie", createMovie)
+	r.POST("/updatemovie/:id", updateMovie)
 
 	r.Run()
 }

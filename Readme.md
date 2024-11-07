@@ -8,6 +8,6 @@ A crud operation demonstrate using Golang using Gorilla/Mux package. It is singl
 - [x] Get All Movies
 - [x] Get by Id
 - [x] Create
-- [ ] Update
+- [x] Update
 - [ ] Delete
 - [ ] Connect Database for storing all movies.
