@@ -42,6 +42,18 @@ func getMovieById(ctx *gin.Context) {
 	ctx.IndentedJSON(http.StatusNotFound, gin.H{"message": "Movie not found!"})
 }
 
+func createMovie(ctx *gin.Context) {
+	var newMovie Movies
+
+	if err := ctx.ShouldBindBodyWithJSON(&newMovie); err != nil {
+		ctx.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+	movies = append(movies, newMovie)
+
+	ctx.JSON(http.StatusCreated, newMovie)
+}
+
 func main() {
 	r := gin.Default()
 	r.GET("/ping", func(ctx *gin.Context) {
@@ -55,6 +67,7 @@ func main() {
 
 	r.GET("/getmovies", getMovies)
 	r.GET("/getmovie/:id", getMovieById)
+	r.POST("/createmovie", createMovie)
 
 	r.Run()
 }

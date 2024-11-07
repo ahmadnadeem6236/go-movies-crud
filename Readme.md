@@ -7,7 +7,7 @@ A crud operation demonstrate using Golang using Gorilla/Mux package. It is singl
 - [x] Setup init
 - [x] Get All Movies
 - [x] Get by Id
-- [ ] Create
+- [x] Create
 - [ ] Update
 - [ ] Delete
 - [ ] Connect Database for storing all movies.
