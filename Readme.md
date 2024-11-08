@@ -1,6 +1,6 @@
 # GO Movies Crud Rest API...
 
-A crud operation demonstrate using Golang using Gorilla/Mux package. It is single page application implementing crud.
+A crud operation demonstrate using Golang using gin package. It is single page application implementing crud.
 
 ## TODO
 
