@@ -10,4 +10,6 @@ A crud operation demonstrate using Golang using gin package. It is single page a
 - [x] Create
 - [x] Update
 - [x] Delete
-- [ ] Connect Database for storing all movies.
+- [ ] Dockerize
+- [ ] Connect Postgresdb
+- [ ] Persist store all data in db
