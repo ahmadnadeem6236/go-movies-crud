@@ -79,6 +79,23 @@ func updateMovie(ctx *gin.Context) {
 
 }
 
+func deleteMovie(ctx *gin.Context) {
+	paramId := ctx.Param("id")
+	id, err := strconv.Atoi(paramId)
+	if err != nil {
+		return
+	}
+	for index, movie := range movies {
+		if movie.Id == id {
+			movies = append(movies[:index], movies[index+1:]...)
+			ctx.JSON(http.StatusOK, gin.H{"message": "Movie deleted successfully"})
+			return
+		}
+	}
+	ctx.JSON(http.StatusNotFound, gin.H{"message": "Movie not found"})
+
+}
+
 func main() {
 	r := gin.Default()
 	r.GET("/ping", func(ctx *gin.Context) {
@@ -94,6 +111,7 @@ func main() {
 	r.GET("/getmovie/:id", getMovieById)
 	r.POST("/createmovie", createMovie)
 	r.POST("/updatemovie/:id", updateMovie)
+	r.POST("/delete/:id", deleteMovie)
 
 	r.Run()
 }

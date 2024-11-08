@@ -9,5 +9,5 @@ A crud operation demonstrate using Golang using Gorilla/Mux package. It is singl
 - [x] Get by Id
 - [x] Create
 - [x] Update
-- [ ] Delete
+- [x] Delete
 - [ ] Connect Database for storing all movies.
